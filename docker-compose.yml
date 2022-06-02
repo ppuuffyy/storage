@@ -1,0 +1,16 @@
+version: '3'
+
+services:  
+  database:
+    image: 'mysql:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: admin_password
+      MYSQL_DATABASE: storage
+      MYSQL_USER: webdream
+      MYSQL_PASSWORD: tesztfeladat
+    volumes:
+      # - db-data:/var/lib/mysql
+      - ./data:/var/lib/mysql
+      - ./.init:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
